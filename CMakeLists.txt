@@ -27,7 +27,7 @@ add_cfe_app(sch_lab
     fsw/src/sch_lab_app.c
     fsw/tables/sch_lab_table.c
 )
-#add_cfe_tables(sch_lab fsw/tables/sch_lab_table.c)
+add_cfe_tables(sch_lab fsw/tables/sch_lab_table.c)
 
 
 #add_cfe_app_dependency(sch_lab tbl)

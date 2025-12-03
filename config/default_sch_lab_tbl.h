@@ -43,6 +43,6 @@
  * There is no extra encapsulation here, this header only
  * defines the default file name to use for the SCH table
  */
-#define SCH_LAB_TBL_DEFAULT_FILE "/cf/schlab.tbl"
+#define SCH_LAB_TBL_DEFAULT_FILE "/cf/sch_lab.tbl"
 
 #endif
