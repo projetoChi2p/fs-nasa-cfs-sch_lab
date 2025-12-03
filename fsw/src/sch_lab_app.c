@@ -61,8 +61,6 @@ typedef struct
 */
 SCH_LAB_GlobalData_t SCH_LAB_Global;
 
-extern SCH_LAB_ScheduleTable_t SCH_LAB_ScheduleTable;
-
 /*
 ** Local Function Prototypes
 */
@@ -206,8 +204,7 @@ CFE_Status_t SCH_LAB_AppInit(void)
         /*
         ** Loading Table
         */
-        //Status = CFE_TBL_Load(SCH_LAB_Global.TblHandle, CFE_TBL_SRC_FILE, SCH_LAB_TBL_DEFAULT_FILE);
-        Status = CFE_TBL_Load(SCH_LAB_Global.TblHandle, CFE_TBL_SRC_ADDRESS, &SCH_LAB_ScheduleTable);
+        Status = CFE_TBL_Load(SCH_LAB_Global.TblHandle, CFE_TBL_SRC_FILE, SCH_LAB_TBL_DEFAULT_FILE);
         if (Status != CFE_SUCCESS)
         {
             CFE_ES_WriteToSysLog("SCH_LAB: Error Loading Table ScheduleTable, RC = 0x%08lX\n", (unsigned long)Status);
