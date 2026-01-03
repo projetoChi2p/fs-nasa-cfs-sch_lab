@@ -27,8 +27,11 @@ add_cfe_app(sch_lab
     fsw/src/sch_lab_app.c
     fsw/tables/sch_lab_table.c
 )
-add_cfe_tables(sch_lab fsw/tables/sch_lab_table.c)
 
+if(SCH_LAB_APP_USE_STATIC_TABLE)
+  add_definitions(-DSCH_LAB_APP_USE_STATIC_TABLE=1)
+else()
+  add_cfe_tables(sch_lab fsw/tables/sch_lab_table.c)
+endif()
 
-#add_cfe_app_dependency(sch_lab tbl)
 target_link_libraries(sch_lab tbl)

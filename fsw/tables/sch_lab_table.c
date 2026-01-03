@@ -150,4 +150,6 @@ SCH_LAB_ScheduleTable_t SCH_LAB_ScheduleTable = {
 **    3) a brief description of the contents of the file image
 **    4) the desired name of the table image binary file that is cFE compatible
 */
+#ifndef SCH_LAB_APP_USE_STATIC_TABLE
 CFE_TBL_FILEDEF(SCH_LAB_ScheduleTable, SCH_LAB_APP.ScheduleTable, Schedule Lab MsgID Table, sch_lab_table.tbl)
+#endif
