@@ -76,8 +76,17 @@
 **  3. If the table grows too big, increase SCH_LAB_MAX_SCHEDULE_ENTRIES
 */
 
+#ifndef MSG_APPS_HK_TICKS
+#define MSG_APPS_HK_TICKS        100
+#endif
+
+#ifndef MSG_MXM_HUFF_WORK_TICKS
+#define MSG_MXM_HUFF_WORK_TICKS   10
+#endif
+
+
 SCH_LAB_ScheduleTable_t SCH_LAB_ScheduleTable = {
-    .TickRate = 100,
+    .TickRate = 100,  /* Ticks per second. */
     .Config   = {
         {CFE_SB_MSGID_WRAP_VALUE(CFE_ES_SEND_HK_MID),  100, 0}, /* Example of a 1hz packet */
         {CFE_SB_MSGID_WRAP_VALUE(CFE_TBL_SEND_HK_MID),  96, 0},
@@ -87,32 +96,17 @@ SCH_LAB_ScheduleTable_t SCH_LAB_ScheduleTable = {
 
 /* Example of including additional open source apps  */
 
-#ifdef BUILD_STM32F767_TRACE_SWO
-    #ifdef HAVE_TO_CON
-            {CFE_SB_MSGID_WRAP_VALUE(TO_CON_SEND_HK_MID),  1000, 0}, /* TO 1 Hz alive HK */
-    #endif
-    #ifdef HAVE_MXM_APP
-            {CFE_SB_MSGID_WRAP_VALUE(MXM_APP_SEND_HK_MID),  1000, 0}, /* MXM 1 Hz HK     */
-            {CFE_SB_MSGID_WRAP_VALUE(MXM_APP_CMD_WORK_MID),  300, 0},  /* MXM 100 ms work */
-    #endif
-    #ifdef HAVE_HUFF_APP
-            {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_SEND_HK_MID),  1000, 0}, /* HUFF 1 Hz HK     */
-            {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_CMD_WORK_MID),  300, 0},  /* HUFF 100 ms work */
-    #endif
-#else
-    #ifdef HAVE_TO_CON
-        {CFE_SB_MSGID_WRAP_VALUE(TO_CON_SEND_HK_MID),  100, 0}, /* TO 1 Hz alive HK */
-    #endif
-    #ifdef HAVE_MXM_APP
-            {CFE_SB_MSGID_WRAP_VALUE(MXM_APP_SEND_HK_MID),  100, 0}, /* MXM 1 Hz HK     */
-            {CFE_SB_MSGID_WRAP_VALUE(MXM_APP_CMD_WORK_MID),  10, 0},  /* MXM 100 ms work */
-    #endif
-    #ifdef HAVE_HUFF_APP
-            {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_SEND_HK_MID),  100, 0}, /* HUFF 1 Hz HK     */
-            {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_CMD_WORK_MID),  10, 0},  /* HUFF 100 ms work */
-    #endif
+#ifdef HAVE_TO_CON
+        {CFE_SB_MSGID_WRAP_VALUE(TO_CON_SEND_HK_MID),    MSG_APPS_HK_TICKS,       0},
 #endif
-
+#ifdef HAVE_MXM_APP
+        {CFE_SB_MSGID_WRAP_VALUE(MXM_APP_SEND_HK_MID),   MSG_APPS_HK_TICKS,       0},
+        {CFE_SB_MSGID_WRAP_VALUE(MXM_APP_CMD_WORK_MID),  MSG_MXM_HUFF_WORK_TICKS, 0},
+#endif
+#ifdef HAVE_HUFF_APP
+        {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_SEND_HK_MID),  MSG_APPS_HK_TICKS,       0},
+        {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_CMD_WORK_MID), MSG_MXM_HUFF_WORK_TICKS, 0},
+#endif
 
 #ifdef HAVE_CI_LAB
         {CFE_SB_MSGID_WRAP_VALUE(CI_LAB_SEND_HK_MID), 95, 0},
