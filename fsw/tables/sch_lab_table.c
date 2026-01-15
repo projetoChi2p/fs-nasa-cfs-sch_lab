@@ -107,6 +107,10 @@ SCH_LAB_ScheduleTable_t SCH_LAB_ScheduleTable = {
         {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_SEND_HK_MID),  MSG_APPS_HK_TICKS,       0},
         {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_CMD_WORK_MID), MSG_MXM_HUFF_WORK_TICKS, 0},
 #endif
+#ifdef HAVE_HS
+        {CFE_SB_MSGID_WRAP_VALUE(HS_SEND_HK_MID), 90, 0}, /* Example of a message that wouldn't be sent */
+#endif
+
 
 #ifdef HAVE_CI_LAB
         {CFE_SB_MSGID_WRAP_VALUE(CI_LAB_SEND_HK_MID), 95, 0},
@@ -120,9 +124,6 @@ SCH_LAB_ScheduleTable_t SCH_LAB_ScheduleTable = {
 #ifdef HAVE_SC
         {CFE_SB_MSGID_WRAP_VALUE(SC_SEND_HK_MID), 92, 0},
         {CFE_SB_MSGID_WRAP_VALUE(SC_ONEHZ_WAKEUP_MID), 91, 0},
-#endif
-#ifdef HAVE_HS
-        {CFE_SB_MSGID_WRAP_VALUE(HS_SEND_HK_MID), 90, 0}, /* Example of a message that wouldn't be sent */
 #endif
 #ifdef HAVE_FM
         {CFE_SB_MSGID_WRAP_VALUE(FM_SEND_HK_MID), 101, 0},
@@ -145,5 +146,5 @@ SCH_LAB_ScheduleTable_t SCH_LAB_ScheduleTable = {
 **    4) the desired name of the table image binary file that is cFE compatible
 */
 #ifndef SCH_LAB_APP_USE_STATIC_TABLE
-CFE_TBL_FILEDEF(SCH_LAB_ScheduleTable, SCH_LAB_APP.ScheduleTable, Schedule Lab MsgID Table, sch_lab_table.tbl)
+CFE_TBL_FILEDEF(SCH_LAB_ScheduleTable, SCH_LAB_APP.ScheduleTable, Schedule Lab MsgID Table, sch_lab.tbl)
 #endif
