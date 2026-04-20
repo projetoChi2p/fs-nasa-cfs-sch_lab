@@ -34,7 +34,7 @@
 /**
  * @brief The maximum number of schedule table entries
  */
-#define SCH_LAB_MAX_SCHEDULE_ENTRIES 10
+#define SCH_LAB_MAX_SCHEDULE_ENTRIES 14
 
 /**
  * @brief The maximum number of arguments to each schedule message entry

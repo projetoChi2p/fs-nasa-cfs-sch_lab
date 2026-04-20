@@ -47,7 +47,7 @@
 #include "sample_app_msgids.h"
 #endif
 
-#ifdef HAVE_HS
+#ifdef HAVE_HS_APP
 #include "hs_msgids.h"
 #endif
 
@@ -107,8 +107,9 @@ SCH_LAB_ScheduleTable_t SCH_LAB_ScheduleTable = {
         {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_SEND_HK_MID),  MSG_APPS_HK_TICKS,       0},
         {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_CMD_WORK_MID), MSG_MXM_HUFF_WORK_TICKS, 0},
 #endif
-#ifdef HAVE_HS
-        {CFE_SB_MSGID_WRAP_VALUE(HS_SEND_HK_MID), 90, 0}, /* Example of a message that wouldn't be sent */
+#ifdef HAVE_HS_APP
+        {CFE_SB_MSGID_WRAP_VALUE(HS_SEND_HK_MID),  100,  0},
+        {CFE_SB_MSGID_WRAP_VALUE(HS_WAKEUP_MID),  10,  0},
 #endif
 
 
